@@ -12,7 +12,7 @@ public class Cuadrante {
 	public List<Punto> readCuadrante(String archivo) {
 
 		List<Punto> puntoAux = new LinkedList<Punto>();
-		Punto p;
+		
 		String linea = null;
 		String[] datos;
 		
@@ -23,7 +23,12 @@ public class Cuadrante {
 				datos = linea.split(",");
 				Double ejeX = Double.parseDouble(datos[0]);
 				Double ejeY = Double.parseDouble(datos[1]);
+				
+				if(ejeX > 0 && ejeY > 0) {
+					puntoAux.add(new Punto(ejeX,ejeY));
+				}
 			}
+			br.close();
 			
 		} catch (FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
